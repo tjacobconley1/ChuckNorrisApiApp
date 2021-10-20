@@ -44,6 +44,17 @@ dependencies {
     //RxJava Core
     implementation 'io.reactivex.rxjava3:rxjava:3.0.0'
 
+    // Room components
+    implementation "androidx.room:room-runtime:2.3.0"
+    kapt "androidx.room:room-compiler:2.3.0"
+    implementation "androidx.room:room-ktx:2.3.0"
+    androidTestImplementation "androidx.room:room-testing:2.3.0"
+
+    // Lifecycle components
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.3.1"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
+
     implementation "com.github.akarnokd:rxjava3-retrofit-adapter:3.0.0"
     implementation "com.github.akarnokd:rxjava3-retrofit-adapter:3.0.0"
     implementation 'androidx.core:core-ktx:1.6.0'

@@ -46,7 +46,10 @@ class MainActivity : AppCompatActivity() {
             // 3 possible coroutine scopes
             // IO, Main, Default(heavy computational work)
             CoroutineScope(Dispatchers.IO).launch {
+                // TODO -> STORE EACH RETURNED QUOTE INTO A ROOMDB
+                // TODO -> DISPLAY OLD QUOTES IN A RECYCLER VIEW
                 DisplayQuote()}
+
                 // play whip sound for epic user experience
                 playWhip.start()
             }
@@ -109,4 +112,10 @@ class MainActivity : AppCompatActivity() {
                 //ON FAILURE
             })
     }
+
+
+
+
+
+
 }

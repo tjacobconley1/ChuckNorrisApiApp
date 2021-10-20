@@ -30,8 +30,6 @@ interface Api {
 
         private fun createClient():
                 OkHttpClient {
-//            val logging = HttpLoggingInterceptor()
-//            logging.level = HttpLoggingInterceptor.Level.BODY
             return OkHttpClient.Builder().build()
 
         }

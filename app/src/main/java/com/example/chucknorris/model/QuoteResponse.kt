@@ -6,5 +6,5 @@ import java.util.*
 
 @Parcelize
 data class QuoteResponse(
-    val value: String
+    val value: String,
 ): Parcelable
