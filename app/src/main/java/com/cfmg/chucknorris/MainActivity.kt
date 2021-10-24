@@ -57,6 +57,7 @@ class MainActivity : AppCompatActivity() {
                 // add a new document with a generated ID
                 db.collection("ChuckNorris")
                     .add(quotehashmap)
+
             }
 
                 // play whip sound for epic user experience
