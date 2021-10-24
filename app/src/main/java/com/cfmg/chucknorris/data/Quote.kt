@@ -1,4 +1,4 @@
-package com.example.chucknorris.data
+package com.cfmg.chucknorris.data
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -7,6 +7,6 @@ import androidx.room.PrimaryKey
 // the roomdb
 @Entity(tableName = "quote_table")
 data class Quote(
-   @PrimaryKey(autoGenerate = true)
+   @PrimaryKey(autoGenerate = false)
     val quote: String
 )

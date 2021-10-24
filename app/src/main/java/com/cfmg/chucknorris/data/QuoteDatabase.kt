@@ -1,4 +1,4 @@
-package com.example.chucknorris.data
+package com.cfmg.chucknorris.data
 
 import android.content.Context
 import androidx.room.Database

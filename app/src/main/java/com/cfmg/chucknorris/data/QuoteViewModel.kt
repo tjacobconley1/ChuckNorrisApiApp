@@ -1,4 +1,4 @@
-package com.example.chucknorris.data
+package com.cfmg.chucknorris.data
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

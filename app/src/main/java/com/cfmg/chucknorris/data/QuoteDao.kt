@@ -1,4 +1,4 @@
-package com.example.chucknorris.data
+package com.cfmg.chucknorris.data
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao

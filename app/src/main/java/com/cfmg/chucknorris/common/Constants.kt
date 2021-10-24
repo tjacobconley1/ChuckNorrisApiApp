@@ -1,4 +1,4 @@
-package com.example.chucknorris.common
+package com.cfmg.chucknorris.common
 
 object Constants {
     const val NORRIS_URL = "https://api.chucknorris.io/jokes/random/"

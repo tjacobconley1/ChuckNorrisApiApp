@@ -1,28 +1,26 @@
-package com.example.chucknorris
+package com.cfmg.chucknorris
 
+import android.content.ContentValues.TAG
+import android.content.Intent
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import android.util.Log
 import android.widget.Toast
-import com.example.chucknorris.model.QuoteResponse
-import com.example.chucknorris.model.remote.Api.Companion.getApi
+import com.cfmg.chucknorris.model.remote.Api.Companion.getApi
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
-import com.example.chucknorris.model.remote.HttpRequest.getResponse
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.core.Scheduler
 import io.reactivex.rxjava3.schedulers.Schedulers
-import io.reactivex.rxjava3.schedulers.Schedulers.io
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import retrofit2.Response
-import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +34,10 @@ class MainActivity : AppCompatActivity() {
         // creates an object of the MediaPlayer Class
         // with the whip.mp3 as a sound to play
         val playWhip: MediaPlayer = MediaPlayer.create(this, R.raw.whip)
-        playWhip.start()
+        //playWhip.start()
+
+        // create a firestore Database
+        val db = Firebase.firestore
 
 
         // what to execute when the image button is pressed
@@ -48,7 +49,15 @@ class MainActivity : AppCompatActivity() {
             CoroutineScope(Dispatchers.IO).launch {
                 // TODO -> STORE EACH RETURNED QUOTE INTO A ROOMDB
                 // TODO -> DISPLAY OLD QUOTES IN A RECYCLER VIEW
-                DisplayQuote()}
+                // display quote and return it's string value
+                // to a variable
+                val quotehash = DisplayQuote()
+                // create a new quote hashmap
+                val quotehashmap = hashMapOf("quote" to quotehash)
+                // add a new document with a generated ID
+                db.collection("ChuckNorris")
+                    .add(quotehashmap)
+            }
 
                 // play whip sound for epic user experience
                 playWhip.start()
@@ -59,6 +68,9 @@ class MainActivity : AppCompatActivity() {
 
             //TODO create a second activity
             //TODO navigate to it lol
+            val intent = Intent(this, SettingsAndHistoricalQuotes::class.java)
+            startActivity(intent)
+
 
         }
 
@@ -101,7 +113,7 @@ class MainActivity : AppCompatActivity() {
     // This function is marked as suspend because it will
     // be executed within a coroutine on a separate worker
     // thread in order to reduce UI latency
-    suspend fun DisplayQuote() {
+    suspend fun DisplayQuote(): String {
         val quote = getApi().getQuote()
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
@@ -111,6 +123,7 @@ class MainActivity : AppCompatActivity() {
             }, {
                 //ON FAILURE
             })
+        return tv_quote.text.toString()
     }
 
 

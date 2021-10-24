@@ -1,4 +1,4 @@
-package com.example.chucknorris
+package com.cfmg.chucknorris
 
 import org.junit.Test
 

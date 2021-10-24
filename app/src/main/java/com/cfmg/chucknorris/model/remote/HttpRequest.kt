@@ -1,8 +1,7 @@
-package com.example.chucknorris.model.remote
+package com.cfmg.chucknorris.model.remote
 
-import com.example.chucknorris.common.Constants
+import com.cfmg.chucknorris.common.Constants
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
-import io.reactivex.rxjava3.plugins.RxJavaPlugins
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
