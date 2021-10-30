@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 class QuoteAdapter(private val quoteList: ArrayList<QuoteData>): RecyclerView.Adapter<QuoteAdapter.QuoteViewHolder>() {
 
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuoteAdapter.QuoteViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.list_quote_single, parent, false)
         return QuoteViewHolder(itemView)
